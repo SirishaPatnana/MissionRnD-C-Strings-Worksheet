@@ -10,16 +10,22 @@ ERROR CASES: Return '\0' for invalid inputs.
 
 NOTES:
 */
-
+int leng(char *a)
+{
+	int i, j = 0;
+	for (i = 0; *(a + i) != '\0'; i++)
+		j++;
+	return j;
+}
 char KthIndexFromEnd(char *str, int K) {
 	int i;
-	if (str == '\0' || str == " ")
+	if (str == '\0' || str == " "|| K<0)
 		return '\0';
-	if (K < 0)
+	if (K>leng(str))
 		return '\0';
 	for (i = 0; *(str + i) != '\0'; i++)
 	{
 		if (*(str + i + K + 1) == '\0')
-			return *(str + K);
+			return *(str + i);
 	}
 }
